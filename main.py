@@ -1,5 +1,6 @@
 from Basico_intermedio import *
 from Intermedio_Lista import *
+from Calculadora import *
 import os
 
 
@@ -17,7 +18,17 @@ Elija una opcion: """)
 
         if opcion == "1":
             os.system("cls")
-            pass
+            try:
+                num1 = float(input("Debes enviar datos para acceder a esta función\nPrimer dato: "))
+                num2 = float(input("segundo dato: "))
+                os.system("cls")
+                calculadora = Calculadora(num1, num2)
+                if calculadora.mostrar() != "10":
+                    os.system("cls")
+                    Menu.menu(self)
+
+            except ValueError:
+                os.system("cls"), print("Escribe un valor numerico!\n"), Menu.menu(self)
 
         elif opcion == "2":
             os.system("cls")
