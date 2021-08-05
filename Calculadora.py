@@ -8,7 +8,6 @@ class Calculadora:
         self.numero2 = numero2
 
     def mostrar(self):
-
         opcion = input(f'''{"Menu Calculadora".center(60, "-")})
 1)	Suma
 2)	Resta
@@ -44,30 +43,20 @@ Elija una opción: ''')
             input("CONTINUAR..."), os.system("cls"), Calculadora.mostrar(self)
 
         elif opcion == "7":
-            from math import pi
-            r = float(input("Radio: "))
-            circ = 2 * pi * r
-            print("La circuferecia es: {:.2f}".format(circ))
-            input("CONTINUAR...")
-            os.system("cls"), Calculadora.mostrar(self)
+            calcientifica = CalCientifica(self, self)
+            calcientifica.circunferencia()
 
         elif opcion == "8":
-            from math import pi
-            r = float(input("Radio: "))
-            area = pi * r ** 2
-            print("El area es: {:.2f}".format(area))
-            input("CONTINUAR...")
-            os.system("cls"), Calculadora.mostrar(self)
+            calcientifica = CalCientifica(self, self)
+            calcientifica.areaCirculo()
 
         elif opcion == "9":
-            lado = float(input("Ingrese medida del lado del cuadrado: "))
-            area = lado ** 2
-            print("El area es: {:.2f}".format(area))
-            input("CONTINUAR...")
-            os.system("cls"), Calculadora.mostrar(self)
+            calcientifica = CalCientifica(self, self)
+            calcientifica.areaCuadrado()
+
 
         elif opcion == "10":
-            return opcion
+            pass
 
         else:
             os.system("cls"), print("Elija una opción valida\n"), Calculadora.mostrar(self)
@@ -107,20 +96,48 @@ class CalEstandar(Calculadora):
 
     def ValorAbsoluto(self):
         try:
+
             numero = float(input("Escribe un numero: "))
             print(f"El valor absoluto de {numero} es = {abs(numero)}")
 
         except ValueError:
             os.system("cls"), print("Debes escribir un numero!"), CalEstandar.ValorAbsoluto(self)
 
-# class calCientifica(Calculadora):
-#
-#         def __init__(self, numero1, numero2):
-#                 super().__init__(numero1, numero2)
-# 
-#         def circunferencia(radio):
-#             pass
-#         def areaCirculo(radio):
-#             pass
-#         def areaCuadrado(lado):
-#             pass
+
+class CalCientifica(Calculadora):
+
+        def __init__(self, numero1, numero2):
+                super().__init__(numero1, numero2)
+
+        def circunferencia(self):
+            try:
+                os.system("cls")
+                from math import pi
+                r = float(input("Radio: "))
+                circ = 2 * pi * r
+                print("La circuferecia es: {:.2f}".format(circ))
+                input("CONTINUAR..."), os.system("cls"), Calculadora.mostrar(self)
+            except ValueError:
+                os.system("cls"), print("Desbes escribir un numero!"), CalCientifica.circunferencia(self)
+
+        def areaCirculo(self):
+            try:
+                os.system("cls")
+                from math import pi
+                r = float(input("Radio: "))
+                area = pi * r ** 2
+                print(f"El area es: {area}")
+                input("CONTINUAR...")
+                os.system("cls"), Calculadora.mostrar(self)
+            except ValueError:
+                os.system("cls"), print('Debes escribir un numero!'), CalCientifica.circunferencia(self)
+
+        def areaCuadrado(self):
+            try:
+                os.system("cls")
+                lado = float(input("Escribe el lado del cuadrado: "))
+                area = lado ** 2
+                print(f"El area es: {area}")
+                input("CONTINUAR..."), os.system("cls"), Calculadora.mostrar(self)
+            except ValueError:
+                os.system("cls"), print("Desbes escribir un numero!"), CalCientifica.areaCuadrado(self)

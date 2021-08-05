@@ -94,9 +94,8 @@ Elija una opciòn: """)
             except ValueError:
                 os.system("cls"), print("DEBES INGRESAR LOS VALORES EN NUMEROS"), Lista.mostar(self)
         elif opcion == '11':
-            return opcion
+            pass
         else:
-            regresar = False
             os.system("cls"), print("Elije una alternativa existente!"), Lista.mostar(self)
 
 

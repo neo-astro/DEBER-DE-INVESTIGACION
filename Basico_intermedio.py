@@ -121,10 +121,9 @@ Elija una opciòn: """)
                 os.system("cls"), print("Escribe un numero!"), Basico.mostrar(self)
 
         elif opcion == '11':
-            return opcion
+            pass
 
         else:
-            volver = False
             os.system("Cls"), print("ELIE UN OPCION! VALIDA\n"), Basico.mostrar(self)
 
     def numerosN(self, n):

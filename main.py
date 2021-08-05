@@ -1,6 +1,7 @@
 from Basico_intermedio import *
 from Intermedio_Lista import *
 from Calculadora import *
+from Operacion_cadena import *
 import os
 
 
@@ -47,7 +48,7 @@ Introdusca los datos que va a tener tu lista: """).split()
                 input("Se ha guardado la lista\nCONTINUAR...\n")
                 os.system("cls")
                 lista = Lista(lista_enteros)
-                if lista.mostar() == "11":
+                if lista.mostar() != "11":
                     os.system("cls")
                     Menu.menu(self)
 
@@ -55,7 +56,11 @@ Introdusca los datos que va a tener tu lista: """).split()
                 os.system("cls"), print("Escribe solo numeros!\n"), Menu.menu(self)
 
         elif opcion == "4":
-            pass
+            cad = input("Escribe una cadena para acceder al menu selecionado: ")
+            cadena = Cadena(cad)
+            if cadena.mostrar != "10":
+                os.system("cls")
+                Menu.menu(self)
 
         elif opcion == "5":
             exit()
