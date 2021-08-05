@@ -56,9 +56,10 @@ Introdusca los datos que va a tener tu lista: """).split()
                 os.system("cls"), print("Escribe solo numeros!\n"), Menu.menu(self)
 
         elif opcion == "4":
-            cad = input("Escribe una cadena para acceder al menu selecionado: ")
+            cad = input("Escribe una cadena para acceder al menu selecionado: ").lower()
             cadena = Cadena(cad)
-            if cadena.mostrar != "10":
+            os.system("cls")
+            if cadena.mostrar() != "10":
                 os.system("cls")
                 Menu.menu(self)
 

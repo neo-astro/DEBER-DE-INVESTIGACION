@@ -1,4 +1,6 @@
 import os
+
+
 class Lista:
 
     def __init__(self, lista):
@@ -89,10 +91,9 @@ Elija una opciòn: """)
                         dic_cliente[clave] = vuelto
 
                 Lista.vueltoLista(self, lista_diccionario)
-
-
             except ValueError:
                 os.system("cls"), print("DEBES INGRESAR LOS VALORES EN NUMEROS"), Lista.mostar(self)
+
         elif opcion == '11':
             pass
         else:
@@ -101,7 +102,7 @@ Elija una opciòn: """)
 
     def presentarLista(self):
         os.system("cls")
-        print("Los elementos de tu  lista se muestran a continuaciòn")
+        print("Los elementos de tu  lista se muestran a continuaciòn:")
         for ele in self.lista:
             print(ele)
         input("\nCONTINUAR...")
@@ -162,28 +163,29 @@ Elija una opciòn: """)
         dic = {"Notas": f"{listaNotasDicccionario}"}
         for llave in dic:
             print(llave, dic[llave])
-        input("\nCONTINUAR..."), os.system("cls")
+        input("\nCONTINUAR..."), os.system("cls"), Lista.mostar(self)
 
     def insertarLista(self, valor, posicion):
         os.system("cls")
         if posicion > len(self.lista) or posicion < -(len(self.lista)):
             os.system("cls"), print("El rango que eligio no existe en la lista, eliga un rango que no exceda el rango de su lista "), Lista.mostar(self)
         else:
-            self.lista = self.lista[0:posicion] + [valor] + self.lista[posicion:]
-            print(f"La lista esta actualizada: {self.lista}")
+            lista = self.lista[0:posicion] + [valor] + self.lista[posicion:]
+            print(f"La lista esta actualizada: {lista}")
+            self.lista = lista
             input("CONTINUAR...")
             os.system("cls"), Lista.mostar(self)
 
 
     def eliminarLista(self, valor):
-
-
         os.system("cls")
         lista_eliminado = list(filter(lambda x: x != valor, self.lista))
 
         if valor not in self.lista:
             print(f"El numero {valor} no se encontro en la lista")
+
         print(f"Lista actualizada {lista_eliminado}")
+        self.lista = lista_eliminado
         input("CONTINUAR..."), os.system("cls"), Lista.mostar(self)
 
 
@@ -191,17 +193,16 @@ Elija una opciòn: """)
 
 
         os.system("cls")
+
         if posicion > len(self.lista) or posicion < -(len(self.lista)):
             print("La posiciòn esta fuera del rango de la lista, elige una posicion que exista")
-            input("CONTINUAR...")
-            os.system("cls"), Lista.mostar(self)
-
+        elif len(self.lista) == 0:
+            print("No siento, la lista se encuentra vacia")
         else:
-            print(f"El dato de la posicion {posicion} es: {self.lista[posicion]}\nLa lista ha sido actualizada")
-            (self.lista).pop(posicion)
-            print(self.lista)
-            input("CONTINUAR...")
-            os.system("cls")
+            lis_act = list(filter(lambda x: x != self.lista[posicion], self.lista))
+            print(f"El dato de la posicion {posicion} es: {self.lista[posicion]}\nLa lista ha sido actualizada\n{lis_act}")
+            self.lista = lis_act
+        input("CONTINUAR..."), os.system("cls"), Lista.mostar(self)
 
 
     def copiarTuplaLista(self):
